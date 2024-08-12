@@ -33,7 +33,7 @@ const FolderView = ({ folders, links, searchText }: FolderViewProps) => {
       return matchesFolder;
     })
     .filter((link) => {
-      const matchesSearch = link?.title
+      const matchesSearch = link?.url
         ?.toLowerCase()
         .includes(searchText.toLowerCase());
       return matchesSearch;
