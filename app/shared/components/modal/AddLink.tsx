@@ -42,14 +42,23 @@ const AddLink = () => {
       try {
         const linkUrl = data.inputText ? data.inputText : data.url;
 
-        await addLink(linkUrl, selectedFolderId);
+        console.log(linkUrl);
+        console.log(selectedFolderId);
+
+        const res = await addLink(linkUrl, selectedFolderId);
 
         onClose();
 
-        data.setInputText("");
+        if (data?.setInputText) {
+          data.setInputText(undefined);
+        }
+        // data?.setInputText(undefined);
+
+        console.log(res);
 
         router.refresh();
       } catch (error) {
+        console.error(error);
         toast({
           variant: "destructive",
           description: "링크를 추가하는 데 실패했습니다. 다시 시도해주세요.",

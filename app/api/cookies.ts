@@ -4,11 +4,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export async function setAccessToken(data: string) {
-  cookies().set("accessToken", data, {
-    httpOnly: true,
-    secure: true,
-    sameSite: "strict",
-  });
+  cookies().set("accessToken", data);
 }
 
 export async function getAccessToken() {

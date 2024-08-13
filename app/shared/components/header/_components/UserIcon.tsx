@@ -20,9 +20,9 @@ const UserIcon = ({ user }: { user: User }) => {
   const [isPending, startTransition] = useTransition();
 
   const handleLogoutClick = async () => {
-    alert("로그아웃 되었습니다.");
-
     await deleteAccessToken();
+
+    alert("로그아웃 되었습니다.");
   };
 
   const handleButtonClick = () => {
