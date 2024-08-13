@@ -110,7 +110,7 @@ const LinkCard = ({ link, folders }: LinkCardProps) => {
                     <DropdownMenuItem
                       onClick={() => handleAddLinkToFolder(link.url)}
                     >
-                      폴더에 추가
+                      다른 폴더로 이동
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>

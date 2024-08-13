@@ -52,9 +52,6 @@ const AddLink = () => {
         if (data?.setInputText) {
           data.setInputText(undefined);
         }
-        // data?.setInputText(undefined);
-
-        console.log(res);
 
         router.refresh();
       } catch (error) {

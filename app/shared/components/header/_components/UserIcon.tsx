@@ -48,13 +48,6 @@ const UserIcon = ({ user }: { user: User }) => {
             <DropdownMenuItem onClick={handleLogoutClick}>
               로그아웃
             </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={() => {
-                router.push("/folder");
-              }}
-            >
-              마이페이지
-            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       ) : (
