@@ -48,7 +48,13 @@ const UserIcon = ({ user }: { user: User }) => {
             <DropdownMenuItem onClick={handleLogoutClick}>
               로그아웃
             </DropdownMenuItem>
-            <DropdownMenuItem>마이페이지</DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={() => {
+                alert("기능 준비중입니다.");
+              }}
+            >
+              마이페이지
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       ) : (

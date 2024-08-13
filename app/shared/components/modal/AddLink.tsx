@@ -75,7 +75,7 @@ const AddLink = () => {
             return (
               <div
                 key={folder.id}
-                className={`hover:bg-linkbrary-gray_5 dark:hover:bg-linkbrary-gray_1 dark:hover:text-linkbrary-black flex items-center justify-between rounded-md p-2 ${selectedFolderId === folder.id ? "bg-linkbrary-gray_5 text-linkbrary-black" : ""}`}
+                className={`flex items-center justify-between rounded-md p-2 hover:bg-linkbrary-gray_5 dark:hover:bg-linkbrary-gray_1 dark:hover:text-linkbrary-black ${selectedFolderId === folder.id ? "bg-linkbrary-gray_5 text-linkbrary-black" : ""}`}
                 onClick={() => handleFolderClick(folder.id)}
               >
                 <div>{folder.name}</div>

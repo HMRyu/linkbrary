@@ -70,7 +70,7 @@ const FolderView = ({ folders, links, searchText }: FolderViewProps) => {
           </div>
           <div className="flex flex-nowrap items-center space-x-1">
             <div
-              className="text-linkbrary-primary cursor-pointer whitespace-nowrap"
+              className="cursor-pointer whitespace-nowrap text-linkbrary-primary"
               onClick={() => {
                 onOpen("addFolder", folders);
               }}
@@ -97,7 +97,7 @@ const FolderView = ({ folders, links, searchText }: FolderViewProps) => {
                   height={16}
                 />
                 <div
-                  className="text-linkbrary-gray_2 font-semibold"
+                  className="font-semibold text-linkbrary-gray_2"
                   onClick={() =>
                     onOpen("shareFolder", {
                       selectedFolderName,
@@ -116,7 +116,7 @@ const FolderView = ({ folders, links, searchText }: FolderViewProps) => {
                   height={16}
                 />
                 <div
-                  className="text-linkbrary-gray_2 font-semibold"
+                  className="font-semibold text-linkbrary-gray_2"
                   onClick={() =>
                     onOpen("editFolder", {
                       selectedFolderId,
@@ -136,7 +136,7 @@ const FolderView = ({ folders, links, searchText }: FolderViewProps) => {
                   height={16}
                 />
                 <div
-                  className="text-linkbrary-gray_2 font-semibold"
+                  className="font-semibold text-linkbrary-gray_2"
                   onClick={() =>
                     onOpen("deleteFolder", {
                       selectedFolderId,

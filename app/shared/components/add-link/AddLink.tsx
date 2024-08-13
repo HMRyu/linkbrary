@@ -1,11 +1,13 @@
 "use client";
 
+import React, { useState } from "react";
 import Image from "next/image";
+
 import Button from "../button/Button";
 import useModal from "@/app/store/use-modal-store";
 import { Folder } from "@/types/folder/Folder";
 import { LinkType } from "@/types/link/Link";
-import React, { useState } from "react";
+import { useToast } from "@/components/ui/use-toast";
 
 interface AddLinkProps {
   folders: Folder[];
@@ -16,16 +18,26 @@ const AddLink = ({ folders, links }: AddLinkProps) => {
   const [inputText, setInputText] = useState<string>("");
 
   const { onOpen } = useModal();
+  const { toast } = useToast();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!inputText) {
+      toast({
+        variant: "destructive",
+        description: "링크를 입력해 주세요.",
+      });
+
+      return;
+    }
 
     onOpen("addLink", { folders, links, inputText, setInputText });
   };
 
   return (
     <form
-      className="border-linkbrary-primary dark:bg-linkbrary-black flex w-full items-center rounded-xl border px-2 py-[10px] md:px-5 md:py-4"
+      className="flex w-full items-center rounded-xl border border-linkbrary-primary px-2 py-[10px] dark:bg-linkbrary-black md:px-5 md:py-4"
       onSubmit={handleSubmit}
     >
       <div className="flex flex-grow items-center space-x-3">
@@ -42,7 +54,7 @@ const AddLink = ({ folders, links }: AddLinkProps) => {
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           placeholder="링크를 추가해 보세요."
-          className="dark:bg-linkbrary-black flex-grow py-1 text-sm outline-none md:text-base"
+          className="flex-grow py-1 text-sm outline-none dark:bg-linkbrary-black md:text-base"
         />
       </div>
       <div>
