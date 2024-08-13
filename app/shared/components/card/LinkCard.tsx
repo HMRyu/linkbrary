@@ -57,8 +57,12 @@ const LinkCard = ({ link, folders }: LinkCardProps) => {
 
   return (
     <div className="flex justify-center">
-      <div className="dark:bg-linkbrary-black flex h-[350px] w-80 flex-1 flex-col overflow-hidden rounded-lg bg-white shadow-md">
-        <Link href={formattedUrl(link.url)}>
+      <div className="flex h-[350px] w-80 flex-1 flex-col overflow-hidden rounded-lg bg-white shadow-md dark:bg-linkbrary-black">
+        <Link
+          href={formattedUrl(link.url)}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <div className="relative h-60 w-full overflow-hidden">
             {link.image_source ? (
               <Image
@@ -79,7 +83,7 @@ const LinkCard = ({ link, folders }: LinkCardProps) => {
         </Link>
         <div className="flex flex-1 flex-col p-4">
           <div className="mb-2 flex items-center justify-between">
-            <div className="text-linkbrary-gray_2 text-xs">
+            <div className="text-xs text-linkbrary-gray_2">
               {calculateTimeDiff(link.created_at)}
             </div>
             <div>
@@ -117,7 +121,7 @@ const LinkCard = ({ link, folders }: LinkCardProps) => {
             <div className="mb-2 truncate text-sm">
               {link.description || "상세 설명이 없습니다."}
             </div>
-            <div className="text-linkbrary-gray_2 text-sm">
+            <div className="text-sm text-linkbrary-gray_2">
               {formatDate(link.created_at)}
             </div>
           </div>
