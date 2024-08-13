@@ -50,7 +50,7 @@ const UserIcon = ({ user }: { user: User }) => {
             </DropdownMenuItem>
             <DropdownMenuItem
               onClick={() => {
-                alert("기능 준비중입니다.");
+                router.push("/folder");
               }}
             >
               마이페이지
