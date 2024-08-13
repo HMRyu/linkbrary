@@ -4,15 +4,16 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export async function setAccessToken(data: string) {
-  cookies().set("accessToken", data);
+  cookies().set("accessToken", data, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "strict",
+  });
 }
 
 export async function getAccessToken() {
   const cookieStore = cookies();
   const accessToken = cookieStore.get("accessToken");
-  // console.log(accessToken);
-
-  // if (!accessToken) return redirect("/signin");
 
   return accessToken?.value;
 }
