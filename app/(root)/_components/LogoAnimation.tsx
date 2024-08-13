@@ -20,7 +20,7 @@ export default function LogoAnimation() {
     <div className="fixed inset-0 flex items-center justify-center bg-linkbrary-black">
       <Image
         className="animate-fade-in-out"
-        src="/images/header/logo.png"
+        src="/images/header/logo.svg"
         alt="logo"
         width={300}
         height={100}

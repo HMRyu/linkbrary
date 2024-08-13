@@ -71,11 +71,11 @@ const SignIn = () => {
   }
 
   return (
-    <div className="bg-linkbrary-gray_5 dark:bg-linkbrary-black flex h-screen flex-col items-center justify-center">
+    <div className="flex h-screen flex-col items-center justify-center bg-linkbrary-gray_5 dark:bg-linkbrary-black">
       <div className="space-y-4">
         <Link href="/">
           <Image
-            src="/images/auth/logo.png"
+            src="/images/auth/logo.svg"
             width={200}
             height={38}
             alt="logo"

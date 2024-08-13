@@ -9,12 +9,12 @@ const Header = async () => {
   const currentUser = await getCurrentUser();
 
   return (
-    <div className="bg-linkbrary-gray_5 dark:bg-linkbrary-black w-full py-[13px] md:py-5">
+    <div className="w-full bg-linkbrary-gray_5 py-[13px] dark:bg-linkbrary-black md:py-5">
       <div className="mx-8 flex items-center justify-between md:mx-[200px]">
         <div>
           <Link href="/">
             <Image
-              src="/images/header/logo.png"
+              src="/images/header/logo.svg"
               alt="logo"
               width={133}
               height={24}
