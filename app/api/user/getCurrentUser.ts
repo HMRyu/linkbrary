@@ -1,17 +1,18 @@
-import { AxiosError } from "axios";
-import axiosInstance from "../axiosInstance";
+import { getAccessToken } from "../cookies";
 
-export const getCurrentUser = async () => {
-  try {
-    const response = await axiosInstance.get("/users");
-    return response;
-  } catch (error) {
-    if (error instanceof AxiosError) {
-      if (error.response && error.response.status === 401) {
-        return null;
-      }
-    }
+const getCurrentUser = async () => {
+  const accessToken = await getAccessToken();
 
-    throw error;
-  }
+  const res = await fetch("https://bootcamp-api.codeit.kr/api/users", {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+    cache: "force-cache",
+  });
+
+  const data = await res.json();
+
+  return data;
 };
+
+export default getCurrentUser;

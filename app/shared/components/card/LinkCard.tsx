@@ -94,7 +94,7 @@ const LinkCard = ({ link, folders }: LinkCardProps) => {
                   <DropdownMenuTrigger>
                     {!pathname.includes("shared") && (
                       <Image
-                        src="/images/card/kebab.png"
+                        src="/images/card/kebab.svg"
                         alt="kebab"
                         width={21}
                         height={17}
