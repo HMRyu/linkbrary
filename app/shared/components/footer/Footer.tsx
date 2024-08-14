@@ -8,8 +8,8 @@ const Footer = () => {
   };
 
   return (
-    <div className="flex items-center justify-between bg-linkbrary-navy px-[104px] pb-[64px] pt-8">
-      <div className="text-linkbrary-gray_8">©codeit - 2023</div>
+    <div className="flex items-center justify-between bg-linkbrary-navy px-8 pb-[64px] pt-8">
+      <div className="text-linkbrary-gray_8">©codeit - 2024</div>
       <div className="text-linkbrary-gray_9">
         <div>Privacy Policy</div>
         <div>FAQ</div>
