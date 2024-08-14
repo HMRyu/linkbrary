@@ -7,7 +7,7 @@ import FolderClient from "./_components/FolderClient";
 const FolderPage = async () => {
   const currentUser = await getCurrentUser();
 
-  const user = currentUser?.data[0];
+  const user = currentUser?.data.data[0];
 
   const folderData = await getFolderData(user.id);
   const linkData = await getLinkData(user.id);

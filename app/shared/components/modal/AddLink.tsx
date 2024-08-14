@@ -42,15 +42,12 @@ const AddLink = () => {
       try {
         const linkUrl = data.inputText ? data.inputText : data.url;
 
-        console.log(linkUrl);
-        console.log(selectedFolderId);
-
         const res = await addLink(linkUrl, selectedFolderId);
 
         onClose();
 
         if (data?.setInputText) {
-          data.setInputText(undefined);
+          data.setInputText("");
         }
 
         router.refresh();

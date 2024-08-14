@@ -23,7 +23,7 @@ const Header = async () => {
         </div>
         <div className="flex items-center space-x-3">
           <ThemeButton />
-          <UserIcon user={currentUser?.data[0]} />
+          <UserIcon user={currentUser?.data.data[0]} />
         </div>
       </div>
     </div>
