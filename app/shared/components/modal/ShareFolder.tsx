@@ -22,7 +22,7 @@ const ShareFolder = () => {
 
   const handleCopy = async (folderId: number) => {
     try {
-      const url = `localhost:3000/shared/${folderId}`;
+      const url = `https://linkbrary-eta.vercel.app/shared/${folderId}`;
 
       await navigator.clipboard.writeText(url);
 
