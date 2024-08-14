@@ -91,7 +91,7 @@ const SignUp = () => {
           </Link>
         </div>
       </div>
-      <div className="mt-[30px] w-[400px]">
+      <div className="mt-[30px] w-screen px-8 md:w-[400px] md:px-0">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
