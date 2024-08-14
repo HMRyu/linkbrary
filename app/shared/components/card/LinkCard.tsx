@@ -98,6 +98,16 @@ const LinkCard = ({ link, folders }: LinkCardProps) => {
                         alt="kebab"
                         width={21}
                         height={17}
+                        className="dark:hidden"
+                      />
+                    )}
+                    {!pathname.includes("shared") && (
+                      <Image
+                        src="/images/card/white-kebab.svg"
+                        alt="kebab"
+                        width={21}
+                        height={17}
+                        className="hidden dark:block"
                       />
                     )}
                   </DropdownMenuTrigger>
