@@ -89,70 +89,66 @@ const FolderView = ({ folders, links, searchText }: FolderViewProps) => {
           <div className="text-2xl font-semibold">{selectedFolderName}</div>
           {selectedFolderName !== "전체" ? (
             <div className="flex space-x-4">
-              <div className="flex cursor-pointer items-center">
+              <div
+                className="flex cursor-pointer items-center"
+                onClick={() =>
+                  onOpen("shareFolder", {
+                    selectedFolderName,
+                    selectedFolderId,
+                  })
+                }
+              >
                 <Image
                   src="/images/folder/share.png"
                   alt="share"
                   width={16}
                   height={16}
                 />
-                <div
-                  className="font-semibold text-linkbrary-gray_2"
-                  onClick={() =>
-                    onOpen("shareFolder", {
-                      selectedFolderName,
-                      selectedFolderId,
-                    })
-                  }
-                >
-                  공유
-                </div>
+                <div className="font-semibold text-linkbrary-gray_2">공유</div>
               </div>
-              <div className="flex cursor-pointer items-center">
+              <div
+                className="flex cursor-pointer items-center"
+                onClick={() =>
+                  onOpen("editFolder", {
+                    selectedFolderId,
+                    selectedFolderName,
+                    setSelectedFolderName,
+                  })
+                }
+              >
                 <Image
                   src="/images/folder/pen.png"
                   alt="pen"
                   width={16}
                   height={16}
                 />
-                <div
-                  className="font-semibold text-linkbrary-gray_2"
-                  onClick={() =>
-                    onOpen("editFolder", {
-                      selectedFolderId,
-                      selectedFolderName,
-                      setSelectedFolderName,
-                    })
-                  }
-                >
+                <div className="font-semibold text-linkbrary-gray_2">
                   이름 변경
                 </div>
               </div>
-              <div className="flex cursor-pointer items-center">
+              <div
+                className="flex cursor-pointer items-center"
+                onClick={() =>
+                  onOpen("deleteFolder", {
+                    selectedFolderId,
+                    selectedFolderName,
+                  })
+                }
+              >
                 <Image
                   src="/images/folder/delete.png"
                   alt="delete"
                   width={16}
                   height={16}
                 />
-                <div
-                  className="font-semibold text-linkbrary-gray_2"
-                  onClick={() =>
-                    onOpen("deleteFolder", {
-                      selectedFolderId,
-                      selectedFolderName,
-                    })
-                  }
-                >
-                  삭제
-                </div>
+                <div className="font-semibold text-linkbrary-gray_2">삭제</div>
               </div>
             </div>
           ) : (
             <></>
           )}
         </div>
-        <div className="mt-3 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-3 grid min-h-[350px] grid-cols-1 gap-4 py-6 md:grid-cols-2 xl:grid-cols-3">
           {filteredLinks.length === 0 ? (
             <div>저장된 링크가 없습니다.</div>
           ) : (

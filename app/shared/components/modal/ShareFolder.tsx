@@ -50,26 +50,29 @@ const ShareFolder = () => {
           <div>{data.selectedFolderName}</div>
         </div>
         <div
-          className="flex cursor-pointer justify-center"
+          className="flex justify-center"
           onClick={() => handleCopy(data.selectedFolderId)}
         >
           {copied ? (
-            <div className="flex flex-col items-center">
+            <div className="flex items-center justify-between space-x-4">
+              <div>공유 링크가 복사되었습니다!</div>
               <Image
                 src="/images/modal/check.png"
                 alt="check"
                 width={14}
                 height={14}
               />
-              <div>공유 링크가 복사되었습니다!</div>
             </div>
           ) : (
-            <Image
-              src="/images/add-link/link.png"
-              alt="link"
-              width={18}
-              height={18}
-            />
+            <div className="flex cursor-pointer items-center justify-between space-x-4">
+              <div>공유 링크 복사하기</div>
+              <Image
+                src="/images/add-link/link.png"
+                alt="link"
+                width={18}
+                height={18}
+              />
+            </div>
           )}
         </div>
       </DialogContent>
