@@ -14,14 +14,14 @@
 
 ## Tech Stack
 
-- Next.js
-- TypeScript
-- Tailwind CSS
-- shadcn ui
-- axios
-- zustand
-- react-hook-form
-- zod
+![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![shadcn](https://img.shields.io/badge/shadcn%2Fui-000000?style=for-the-badge&logo=shadcnui&logoColor=white)
+![axios](https://img.shields.io/badge/axios-671ddf?&style=for-the-badge&logo=axios&logoColor=white)
+![React](https://img.shields.io/badge/zustand-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![React Hook Form](https://img.shields.io/badge/React%20Hook%20Form-%23EC5990.svg?style=for-the-badge&logo=reacthookform&logoColor=white)
+![Zod](https://img.shields.io/badge/zod-%233068b7.svg?style=for-the-badge&logo=zod&logoColor=white)
 
 <br />
 
@@ -37,6 +37,8 @@ https://github.com/user-attachments/assets/1df66e75-3c78-4acc-902a-d95593e6a9a7
 https://github.com/user-attachments/assets/bc6e8a56-aada-4c36-973d-4854c347a19b
 
 ### 파일 공유 
+https://github.com/user-attachments/assets/0922b78f-cb0c-4f0e-b240-c611585fcecf
+
 ### 링크 삭제 
 https://github.com/user-attachments/assets/468175ce-5bd8-4110-a77c-c95c07478956
 
@@ -88,6 +90,19 @@ getServerSideProps 는 서버에서 데이터를 가져온 후 props 로 클라�
 
 이러한 이유들로 app router 를 채택하였다.
 </details>
+
+<details>
+<summary>tailwind css 를 쓴 이유</summary>
+<br>
+
+</details>
+
+<details>
+<summary>shadcn ui 를 쓴 이유</summary>
+<br>
+
+</details>
+
 
 <details>
 <summary>fetch 대신 axios 를 쓴 이유</summary>
