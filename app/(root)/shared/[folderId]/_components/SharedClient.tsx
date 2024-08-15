@@ -24,7 +24,7 @@ const SharedClient = ({ links }: SharedClientProps) => {
     <div>
       <div className="mx-8 mt-10 max-w-screen-lg xl:mx-auto">
         <SearchBar searchText={searchText} setSearchText={setSearchText} />
-        <div className="mt-3 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-3 grid min-h-[350px] grid-cols-1 gap-4 py-6 md:grid-cols-2 xl:grid-cols-3">
           {filteredLinks.length === 0 ? (
             <div>검색 결과가 없습니다.</div>
           ) : (
