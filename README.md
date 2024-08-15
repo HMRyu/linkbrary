@@ -92,13 +92,13 @@ getServerSideProps 는 서버에서 데이터를 가져온 후 props 로 클라�
 </details>
 
 <details>
-<summary>tailwind css 를 쓴 이유</summary>
+<summary>tailwind css + shadcn ui 를 쓴 이유</summary>
 <br>
 
 </details>
 
 <details>
-<summary>shadcn ui 를 쓴 이유</summary>
+<summary>zustand 를 쓴 이유</summary>
 <br>
 
 </details>
