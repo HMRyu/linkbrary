@@ -69,7 +69,7 @@ const LinkCard = ({ link, folders }: LinkCardProps) => {
                 src={fixUrl(link.image_source)}
                 alt="link-image"
                 layout="fill"
-                className="object-cover"
+                className="object-contain"
               />
             ) : (
               <Image
