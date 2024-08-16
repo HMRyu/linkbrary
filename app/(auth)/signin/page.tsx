@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useTransition } from "react";
+import { useState, useTransition } from "react";
 
 import {
   Form,
@@ -24,6 +24,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { Check, Copy } from "lucide-react";
 
 const formSchema = z.object({
   email: z.string().email({
@@ -39,6 +40,15 @@ const SignIn = () => {
   const { toast } = useToast();
 
   const [isPending, startTransition] = useTransition();
+
+  const [copiedEmail, setCopiedEmail] = useState<boolean>(false);
+  const [copiedPassword, setCopiedPassword] = useState<boolean>(false);
+
+  const handleCopy = (text: string, setCopied: (value: boolean) => void) => {
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -100,7 +110,10 @@ const SignIn = () => {
                 <FormItem>
                   <FormLabel>이메일</FormLabel>
                   <FormControl>
-                    <Input inputPlaceholder="codeit@codeit.com" {...field} />
+                    <Input
+                      inputPlaceholder="linkbraryTest@test.com"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -126,6 +139,22 @@ const SignIn = () => {
             {isPending ? <Spinner /> : <Button text="로그인" />}
           </form>
         </Form>
+      </div>
+      <div className="mt-10">
+        <div className="flex space-x-5">
+          <div>test email : linkbraryTest@test.com</div>
+          <div
+            onClick={() => handleCopy("linkbraryTest@test.com", setCopiedEmail)}
+          >
+            {copiedEmail ? <Check /> : <Copy />}
+          </div>
+        </div>
+        <div className="flex space-x-5">
+          <div>test password : linkbraryTest</div>
+          <div onClick={() => handleCopy("linkbraryTest", setCopiedPassword)}>
+            {copiedPassword ? <Check /> : <Copy />}
+          </div>
+        </div>
       </div>
     </div>
   );

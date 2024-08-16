@@ -103,7 +103,10 @@ const SignUp = () => {
                 <FormItem>
                   <FormLabel>이메일</FormLabel>
                   <FormControl>
-                    <Input inputPlaceholder="codeit@codeit.com" {...field} />
+                    <Input
+                      inputPlaceholder="linkbraryTest@test.com"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
