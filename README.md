@@ -277,6 +277,9 @@ revalidatePath 는 서버측에서 사용되는 캐시 무효화 함수이고, r
 
 ## Quick Start
 
+테스트 아이디와 테스트 비밀번호를 복사하셔서 로그인 하시면 됩니다.
+<img width="633" alt="test-id:pw" src="https://github.com/user-attachments/assets/e9f1e3a8-e728-4035-a4bb-eda5c9ea967d">
+
 ### Clone
 ```
 git clone https://github.com/HMRyu/linkbrary.git
