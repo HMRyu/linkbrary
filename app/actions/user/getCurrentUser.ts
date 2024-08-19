@@ -1,9 +1,14 @@
 "use server";
 
+import { redirect } from "next/navigation";
 import { getAccessToken } from "@/app/api/cookies";
 
 const getCurrentUser = async () => {
   const accessToken = await getAccessToken();
+
+  if (!accessToken) {
+    redirect("/signin");
+  }
 
   const res = await fetch("https://bootcamp-api.codeit.kr/api/users", {
     method: "GET",
