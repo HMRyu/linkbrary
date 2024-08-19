@@ -20,9 +20,9 @@ const editFolder = async (folderId: number, name: string) => {
     },
   );
 
-  // if (!res.ok) {
-  //   throw new Error("폴더 이름 변경 시 에러가 발생했습니다.");
-  // }
+  if (!res.ok) {
+    throw new Error("폴더 이름 변경 시 에러가 발생했습니다.");
+  }
 
   revalidatePath("/folder");
 };

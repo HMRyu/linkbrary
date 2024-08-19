@@ -13,9 +13,9 @@ const getFolderDataWithOwner = async (folderId: string | number) => {
     },
   );
 
-  // if (!res.ok) {
-  //   throw new Error("폴더를 불러오는 데 에러가 발생했습니다.");
-  // }
+  if (!res.ok) {
+    throw new Error("폴더를 불러오는 데 에러가 발생했습니다.");
+  }
 
   const data = await res.json();
 
