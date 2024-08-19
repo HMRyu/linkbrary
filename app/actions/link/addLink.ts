@@ -20,9 +20,9 @@ const addLink = async (url: string, folderId: number | undefined) => {
 
   const data = await res.json();
 
-  if (!res.ok) {
-    throw new Error("링크 생성 시 에러가 발생했습니다.");
-  }
+  // if (!res.ok) {
+  //   throw new Error("링크 생성 시 에러가 발생했습니다.");
+  // }
 
   revalidatePath("/folder");
 };

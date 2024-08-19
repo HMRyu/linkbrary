@@ -22,9 +22,9 @@ export async function signUp({
 
   const { data } = await res.json();
 
-  if (!data?.accessToken) {
-    throw new Error("회원가입 시 에러가 발생했습니다.");
-  }
+  // if (!data?.accessToken) {
+  //   throw new Error("회원가입 시 에러가 발생했습니다.");
+  // }
 
   await setAccessToken(data?.accessToken);
 }

@@ -13,9 +13,9 @@ const getLinkData = async (userId: number, folderId?: number) => {
     },
   );
 
-  if (!res.ok) {
-    throw new Error("링크를 불러오는 데 실패했습니다.");
-  }
+  // if (!res.ok) {
+  //   throw new Error("링크를 불러오는 데 실패했습니다.");
+  // }
 
   const data = await res.json();
 

@@ -23,9 +23,9 @@ export async function signIn({
 
   const { data } = await res.json();
 
-  if (!data?.accessToken) {
-    throw new Error("로그인 시 에러가 발생했습니다.");
-  }
+  // if (!data?.accessToken) {
+  //   throw new Error("로그인 시 에러가 발생했습니다.");
+  // }
 
   await setAccessToken(data?.accessToken);
 

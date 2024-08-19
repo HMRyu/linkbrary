@@ -19,9 +19,9 @@ const addFolder = async (name: string) => {
 
   const data = await res.json();
 
-  if (!res.ok) {
-    throw new Error("폴더 생성 시 에러가 발생했습니다.");
-  }
+  // if (!res.ok) {
+  //   throw new Error("폴더 생성 시 에러가 발생했습니다.");
+  // }
 
   revalidatePath("/folder");
 };

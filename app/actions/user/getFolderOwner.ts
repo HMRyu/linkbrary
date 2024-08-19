@@ -15,9 +15,9 @@ const getFolderOwner = async (userId: number) => {
 
   const data = await res.json();
 
-  if (!res.ok) {
-    throw new Error("유저를 불러오는 데 오류가 발생했습니다.");
-  }
+  // if (!res.ok) {
+  //   throw new Error("유저를 불러오는 데 오류가 발생했습니다.");
+  // }
 
   revalidatePath("/shared/[folderId]", "page");
 
