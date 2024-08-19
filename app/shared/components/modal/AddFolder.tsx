@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import useModal from "@/app/store/use-modal-store";
 import Input from "../input/Input";
 import Button from "../button/Button";
+import addFolder from "@/app/actions/folder/addFolder";
 
 import {
   Dialog,
@@ -14,7 +15,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { addFolder } from "@/app/api/folder/addFolder";
 import Spinner from "../spinner/Spinner";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -40,7 +40,6 @@ const AddFolder = () => {
         await addFolder(inputValue);
         onClose();
         setInputValue("");
-        router.refresh();
       } catch (error) {
         toast({
           variant: "destructive",

@@ -3,7 +3,8 @@ import { useRouter } from "next/navigation";
 
 import useModal from "@/app/store/use-modal-store";
 import Button from "../button/Button";
-import { deleteFolder } from "@/app/api/folder/deleteFolder";
+import deleteFolder from "@/app/actions/folder/deleteFolder";
+
 import {
   Dialog,
   DialogContent,
@@ -29,7 +30,6 @@ const DeleteFolder = () => {
       try {
         await deleteFolder(data.selectedFolderId);
         onClose();
-        router.refresh();
       } catch (error) {
         toast({
           variant: "destructive",

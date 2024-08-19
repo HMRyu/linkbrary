@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import getCurrentUser from "@/app/api/user/getCurrentUser";
+import getCurrentUser from "@/app/actions/user/getCurrentUser";
 import UserIcon from "./_components/UserIcon";
 import ThemeButton from "../button/ThemeButton";
 
@@ -23,7 +23,7 @@ const Header = async () => {
         </div>
         <div className="flex items-center space-x-3">
           <ThemeButton />
-          <UserIcon user={currentUser?.data.data[0]} />
+          <UserIcon user={currentUser} />
         </div>
       </div>
     </div>

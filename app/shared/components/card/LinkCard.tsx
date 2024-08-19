@@ -10,13 +10,13 @@ import {
   formattedUrl,
 } from "@/lib/utils";
 import { LinkType } from "@/types/link/Link";
+import deleteLink from "@/app/actions/link/deleteLink";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { deleteLink } from "@/app/api/link/deleteLink";
 import useModal from "@/app/store/use-modal-store";
 import { Folder } from "@/types/folder/Folder";
 import Spinner from "../spinner/Spinner";
@@ -40,8 +40,6 @@ const LinkCard = ({ link, folders }: LinkCardProps) => {
     startTransition(async () => {
       try {
         await deleteLink(id);
-
-        router.refresh();
       } catch (error) {
         toast({
           variant: "destructive",

@@ -16,10 +16,9 @@ import {
 import Button from "@/app/shared/components/button/Button";
 import Input from "@/app/shared/components/input/Input";
 
-import axiosInstance from "@/app/api/axiosInstance";
-import { setAccessToken } from "@/app/api/cookies";
 import Spinner from "@/app/shared/components/spinner/Spinner";
 import { useToast } from "@/components/ui/use-toast";
+import { signIn } from "@/app/actions/sign-in/action";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -61,16 +60,7 @@ const SignIn = () => {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     startTransition(async () => {
       try {
-        const res = await axiosInstance.post("/sign-in", {
-          email: values.email,
-          password: values.password,
-        });
-
-        const token = res?.data.data.accessToken;
-
-        await setAccessToken(token);
-
-        router.push("/");
+        await signIn(values);
       } catch (error) {
         toast({
           variant: "destructive",

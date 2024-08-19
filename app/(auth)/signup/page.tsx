@@ -15,13 +15,13 @@ import {
 } from "@/components/ui/form";
 import Button from "@/app/shared/components/button/Button";
 import Input from "@/app/shared/components/input/Input";
-import axiosInstance from "@/app/api/axiosInstance";
 import Spinner from "@/app/shared/components/spinner/Spinner";
 import { useToast } from "@/components/ui/use-toast";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { signUp } from "@/app/actions/sign-up/action";
 
 const formSchema = z
   .object({
@@ -58,10 +58,7 @@ const SignUp = () => {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     startTransition(async () => {
       try {
-        await axiosInstance.post("/sign-up", {
-          email: values.email,
-          password: values.password,
-        });
+        await signUp(values);
 
         alert("회원가입이 완료되었습니다! 로그인 페이지로 이동합니다.");
 

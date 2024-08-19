@@ -1,19 +1,19 @@
-import getCurrentUser from "@/app/api/user/getCurrentUser";
-import { getFolderData } from "@/app/api/folder/getFolderData";
-import { getLinkData } from "@/app/api/link/getLinkData";
 import AddLink from "@/app/shared/components/add-link/AddLink";
 import FolderClient from "./_components/FolderClient";
+import getCurrentUser from "@/app/actions/user/getCurrentUser";
+import getFolderData from "@/app/actions/folder/getFolderData";
+import getLinkData from "@/app/actions/link/getLinkData";
 
 const FolderPage = async () => {
   const currentUser = await getCurrentUser();
 
-  const user = currentUser?.data.data[0];
+  const user = currentUser;
 
   const folderData = await getFolderData(user.id);
   const linkData = await getLinkData(user.id);
 
-  const folders = folderData.data.data;
-  const links = linkData.data.data;
+  const folders = folderData;
+  const links = linkData;
 
   return (
     <div>

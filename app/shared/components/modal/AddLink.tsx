@@ -7,6 +7,7 @@ import Image from "next/image";
 import useModal from "@/app/store/use-modal-store";
 import Button from "../button/Button";
 import { Folder } from "@/types/folder/Folder";
+import addLink from "@/app/actions/link/addLink";
 
 import {
   Dialog,
@@ -15,7 +16,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { addLink } from "@/app/api/link/addLink";
 import Spinner from "../spinner/Spinner";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -42,15 +42,13 @@ const AddLink = () => {
       try {
         const linkUrl = data.inputText ? data.inputText : data.url;
 
-        const res = await addLink(linkUrl, selectedFolderId);
+        await addLink(linkUrl, selectedFolderId);
 
         onClose();
 
         if (data?.setInputText) {
           data.setInputText("");
         }
-
-        router.refresh();
       } catch (error) {
         console.error(error);
         toast({

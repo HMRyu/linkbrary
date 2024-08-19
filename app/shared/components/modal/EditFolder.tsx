@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 import useModal from "@/app/store/use-modal-store";
 import Input from "../input/Input";
 import Button from "../button/Button";
+import editFolder from "@/app/actions/folder/editFolder";
+
 import {
   Dialog,
   DialogContent,
@@ -13,7 +15,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { editFolder } from "@/app/api/folder/editFolder";
 import Spinner from "../spinner/Spinner";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -39,7 +40,6 @@ const EditFolder = () => {
         onClose();
         setInputValue("");
         data.setSelectedFolderName(inputValue);
-        router.refresh();
       } catch (error) {
         toast({
           variant: "destructive",
@@ -64,7 +64,7 @@ const EditFolder = () => {
         </DialogHeader>
         <DialogDescription />
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="border-linkbrary-primary rounded-md border">
+          <div className="rounded-md border border-linkbrary-primary">
             <Input
               inputPlaceholder={data.selectedFolderName}
               value={inputValue}

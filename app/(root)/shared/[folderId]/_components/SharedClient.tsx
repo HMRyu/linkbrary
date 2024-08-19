@@ -13,8 +13,8 @@ interface SharedClientProps {
 const SharedClient = ({ links }: SharedClientProps) => {
   const [searchText, setSearchText] = useState<string>("");
 
-  const filteredLinks = links.filter((link) => {
-    const matchesSearch = link?.title
+  const filteredLinks = links?.filter((link) => {
+    const matchesSearch = link?.url
       ?.toLowerCase()
       .includes(searchText.toLowerCase());
     return matchesSearch;
