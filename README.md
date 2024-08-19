@@ -28,25 +28,32 @@
 ## Key Features
 
 ### 링크 저장 
-https://github.com/user-attachments/assets/0d222b2c-4c9d-4b61-901a-1a3729668eae
+
+https://github.com/user-attachments/assets/c8eea3df-c79a-465c-aec3-d71d477a7051
 
 ### 파일 추가
-https://github.com/user-attachments/assets/1df66e75-3c78-4acc-902a-d95593e6a9a7
+
+https://github.com/user-attachments/assets/5fe02d68-ea10-4b01-9e9a-8bb3684b1ee0
 
 ### 파일 이동
-https://github.com/user-attachments/assets/bc6e8a56-aada-4c36-973d-4854c347a19b
+
+https://github.com/user-attachments/assets/bfa50d4f-84b4-450e-8571-4815449592ec
 
 ### 파일 공유 
-https://github.com/user-attachments/assets/0922b78f-cb0c-4f0e-b240-c611585fcecf
+
+https://github.com/user-attachments/assets/3a377d5f-7853-485f-a43f-92fb0de0e6a4
 
 ### 링크 삭제 
-https://github.com/user-attachments/assets/468175ce-5bd8-4110-a77c-c95c07478956
+
+https://github.com/user-attachments/assets/850f68f5-d61a-49d3-949c-3bb4c6b24af2
 
 ### 파일 삭제 
-https://github.com/user-attachments/assets/3aca1435-968c-497e-aada-ddecf4136858
+
+https://github.com/user-attachments/assets/72e6fc62-0b7a-4135-9909-f48f9fe2c75b
 
 ### 링크 검색 
-https://github.com/user-attachments/assets/54800e00-d06e-4765-8ba3-874a99c532a9
+
+https://github.com/user-attachments/assets/3665d54b-2357-4777-b890-88ef2df45b81
 
 ### 다크모드
 https://github.com/user-attachments/assets/aede31f8-c7e3-4865-8cf1-85e6d0d0c06e
@@ -194,65 +201,32 @@ Zustand 는 가볍고, 보일러플레이트가 거의 필요하지 않았다. �
 
 
 <details>
-<summary>fetch 대신 axios 를 쓴 이유</summary>
+<summary>axios 대신 fetch 를 사용한 이유</summary>
 <br>
-Next.js 에서 제공되는 fetch 를 사용하지 않고 axios 를 사용하였다.
+ 
+### axios 를 포기한 이유
 
-## Axios Interceptor
+### 성능
 
-대부분의 api 요청 시 accessToken 을 header 에 담아서 요청을 보내야 했었다.
+https://github.com/user-attachments/assets/1df66e75-3c78-4acc-902a-d95593e6a9a7
 
-axios interceptor 를 사용하면 모든 http 요청을 중앙에서 제어할 수 있기 때문에 모든 요청에 공통된 헤더를 추가할 수 있어서 편리하게 데이터를 요청할 수 있었다.
+https://github.com/user-attachments/assets/5fe02d68-ea10-4b01-9e9a-8bb3684b1ee0
 
-fetch 함수는 인터셉터 기능을 기본적으로 지원하지 않았다. 그래서 따로 인터셉터 기능을 구현해야 했는데, 이 역시 코드의 양이 길어지기 때문에 axios interceptor 를 사용하였다.
+원래는 interceptor 를 사용하는 경우 코드가 간단해지기 때문에 axios 를 사용했었다.
 
-- fetch 를 사용한 소스코드
-    
-    
-    ```tsx
-    import { getAccessToken } from "../cookies";
-    
-    const addLink = async (url: string, folderId: number | undefined) => {
-      const accessToken = await getAccessToken();
-    
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/links`, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          url,
-          folderId,
-        }),
-      });
-    
-      return res;
-    };
-    
-    export default addLink;
-    ```
+axios 를 사용하여 배포까지 진행하였고, 주변 사람들에게 피드백을 요청하였다.
 
-- axios 를 사용한 소스코드
-    
-    
-    ```tsx
-    import axiosInstance from "../axiosInstance";
-    
-    const addLink = async (url: string, folderId: number | undefined) => {
-      const res = await axiosInstance.post("/links", {
-        url,
-        folderId,
-      });
-    
-      return res;
-    };
+그 중 공통적으로 나오는 피드백이 api 요청 시 속도가 조금 느린 것 같다는 피드백을 받았다.
 
-    export default addLink;
-    ```
-    
+피드백을 듣고 가장 먼저 든 생각은 axios 때문인가? 라는 생각이 가장 먼저 들었다.
 
-물론 fetch 를 사용하면 캐싱 기능이 내장되어 있어서 장점이 있었겠지만, 코드를 간단하게 적을 수 있어 보는 사람이 이해하기 쉬운 이점이 더 크다고 생각하여 axios 를 사용하였다.
+생각해보니 axios 는 클라이언트에서 데이터 요청을 보내는 데 최적화되어있는 라이브러리이다.
+
+그런데 억지로 서버 컴포넌트에서 axios 를 사용하니 성능적으로 문제가 생길 수 있다는 생각을 했다.
+
+따라서 모든 api 요청을 서버 액션으로 변경하였고, 그에 맞게 fetch 를 사용하였다.
+
+밑의 server action 부분에 코드를 자세히 적어놓았다.
 
 <br />
 
@@ -261,13 +235,172 @@ fetch 함수는 인터셉터 기능을 기본적으로 지원하지 않았다. �
 <details>
 <summary>revalidatePath vs router.refresh</summary>
 <br>
-이 프로젝트에서는 router.refresh 를 많이 사용하였다.
+ 
+### revalidatePath 사용
 
-revalidatePath 는 서버측에서 사용되는 캐시 무효화 함수이고, router.refresh 는 클라이언트측에서 사용되는 캐시 무효화 함수이다.
+위의 단락에서는 router.refresh 를 많이 사용하였다고 했지만, server action 을 사용하여 모든 데이터 fetching 을 서버에서 다루려고 하였기 때문에 더 알맞은 함수인 revalidatePath 를 사용하였다.
 
-이 프로젝트에서는 모달을 이용하여 데이터를 변경하는 경우가 굉장히 많았는데, 모달 사용 시 이벤트가 많았고, 이벤트를 사용하기 위해 클라이언트 컴포넌트를 사용했다.
+확실히 서버에서 데이터를 처리함과 동시에 캐시를 다시 받아오도록 캐시 초기화를 하니 더 빠르게 동작하는 것을 확인할 수 있었다
 
-따라서 데이터의 변경 시 클라이언트에서 사용 가능한 router.refresh 를 적극적으로 사용하였다.
+<br />
+
+</details>
+
+<details>
+<summary>server action</summary>
+<br>
+ 
+### Server Action 사용해보기
+
+서버로 요청을 보내는 부분을 전부 클라이언트가 아닌 서버에서 처리하고 싶어서 server action 을 이용해 보기로 하였다.
+
+server action 을 쓰니 client 와 server 의 분리가 일어나기 때문에 보는 사람이 코드를 이해하는 데 훨씬 수월할 것이라는 생각이 들었다.
+
+따라서 연습삼아 이번 프로젝트를 전부 서버 액션으로 바꿔보려고 한다.
+
+### GET
+
+유저 정보를 가져오는 함수를 작성해야 했다.
+
+우리 프로젝트에서는 로그인 시 accessToken 을 발급하여 response 로 전달한다.
+
+따라서 로그인을 서버에서 처리를 하면, 서버 날아오는 accessToken 을 쿠키에 저장하려고 하였다.
+
+그래서 먼저 flow 를 생각해 보았다.
+
+1. client 에서 아이디, 비밀번호 입력한 뒤 submit 요청
+
+```tsx
+"use server";
+
+import { redirect } from "next/navigation";
+import { setAccessToken } from "../../api/cookies";
+
+export async function signIn({
+  email,
+  password,
+}: {
+  email: string;
+  password: string;
+}) {
+  const res = await fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email,
+      password,
+    }),
+  });
+
+  const { data } = await res.json();
+
+  if (!data?.accessToken) {
+    throw new Error("로그인 시 에러가 발생했습니다.");
+  }
+
+  await setAccessToken(data?.accessToken);
+
+  redirect("/");
+}
+```
+
+2. next 서버에서 cookies() 를 이용하여 토큰 저장
+
+```tsx
+"use server";
+
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+
+export async function setAccessToken(data: string) {
+  cookies().set("accessToken", data);
+}
+
+export async function getAccessToken() {
+  const cookieStore = cookies();
+  const accessToken = cookieStore.get("accessToken");
+
+  return accessToken?.value;
+}
+```
+
+3. 토큰 확인 뒤 토큰 존재 시 헤더에 토큰 저장 후 GET 요청
+
+```tsx
+"use server";
+
+import { redirect } from "next/navigation";
+import { getAccessToken } from "@/app/api/cookies";
+
+const getCurrentUser = async () => {
+  const accessToken = await getAccessToken();
+
+  if (!accessToken) {
+    redirect("/signin");
+  }
+
+  const res = await fetch("https://bootcamp-api.codeit.kr/api/users", {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json",
+    },
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error("유저를 불러오는 데 오류가 발생했습니다.");
+  }
+
+  return data.data[0];
+};
+
+export default getCurrentUser;
+
+```
+
+### POST, PUT
+
+post, put 요청도 get 요청과 크게 다르지 않았다.
+
+```tsx
+"use server";
+
+import { revalidatePath } from "next/cache";
+import { getAccessToken } from "@/app/api/cookies";
+
+const addLink = async (url: string, folderId: number | undefined) => {
+  const accessToken = await getAccessToken();
+
+  const res = await fetch("https://bootcamp-api.codeit.kr/api/links", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      url,
+      folderId,
+    }),
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error("링크 생성 시 에러가 발생했습니다.");
+  }
+
+  revalidatePath("/folder");
+};
+
+export default addLink;
+
+```
+
+##
 
 <br />
 
