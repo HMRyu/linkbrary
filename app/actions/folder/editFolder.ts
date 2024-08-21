@@ -24,6 +24,7 @@ const editFolder = async (folderId: number, name: string) => {
     throw new Error("폴더 이름 변경 시 에러가 발생했습니다.");
   }
 
+  revalidatePath("/");
   revalidatePath("/folder");
 };
 

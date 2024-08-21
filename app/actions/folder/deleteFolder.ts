@@ -21,6 +21,7 @@ const deleteFolder = async (folderId: number) => {
     throw new Error("폴더를 삭제하는 데 실패했습니다.");
   }
 
+  revalidatePath("/");
   revalidatePath("/folder");
 };
 

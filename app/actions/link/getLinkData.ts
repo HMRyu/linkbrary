@@ -19,6 +19,7 @@ const getLinkData = async (userId: number, folderId?: number) => {
 
   const data = await res.json();
 
+  revalidatePath("/");
   revalidatePath("/folder");
 
   return data.data;

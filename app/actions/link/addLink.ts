@@ -24,6 +24,7 @@ const addLink = async (url: string, folderId: number | undefined) => {
     throw new Error("링크 생성 시 에러가 발생했습니다.");
   }
 
+  revalidatePath("/");
   revalidatePath("/folder");
 };
 

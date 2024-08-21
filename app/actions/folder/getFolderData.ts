@@ -23,6 +23,7 @@ const getFolderData = async (userId: number) => {
 
   const data = await res.json();
 
+  revalidatePath("/");
   revalidatePath("/folder");
 
   return data.data;

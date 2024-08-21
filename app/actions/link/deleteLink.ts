@@ -21,6 +21,7 @@ const deleteLink = async (linkId: number) => {
     throw new Error("링크를 삭제하는 데 실패했습니다.");
   }
 
+  revalidatePath("/");
   revalidatePath("/folder");
 };
 

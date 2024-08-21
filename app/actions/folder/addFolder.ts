@@ -23,6 +23,7 @@ const addFolder = async (name: string) => {
     throw new Error("폴더 생성 시 에러가 발생했습니다.");
   }
 
+  revalidatePath("/");
   revalidatePath("/folder");
 };
 

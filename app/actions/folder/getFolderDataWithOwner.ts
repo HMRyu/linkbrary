@@ -19,6 +19,7 @@ const getFolderDataWithOwner = async (folderId: string | number) => {
 
   const data = await res.json();
 
+  revalidatePath("/");
   revalidatePath("/shared/[folderId]", "page");
 
   return data.data[0];
