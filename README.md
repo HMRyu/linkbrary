@@ -29,31 +29,31 @@
 
 ### 링크 저장 
 
-https://github.com/user-attachments/assets/c8eea3df-c79a-465c-aec3-d71d477a7051
+https://github.com/user-attachments/assets/b970667d-9fe2-4800-adfc-d8fdcc1d16cc
 
 ### 파일 추가
 
-https://github.com/user-attachments/assets/5fe02d68-ea10-4b01-9e9a-8bb3684b1ee0
+https://github.com/user-attachments/assets/32c3e43e-fb2e-4b91-b670-952ff7564ee7
 
 ### 파일 이동
 
-https://github.com/user-attachments/assets/bfa50d4f-84b4-450e-8571-4815449592ec
+https://github.com/user-attachments/assets/0a073c9e-9f84-4503-aafe-97f487479ddf
 
 ### 파일 공유 
 
-https://github.com/user-attachments/assets/3a377d5f-7853-485f-a43f-92fb0de0e6a4
+https://github.com/user-attachments/assets/d424b4a3-e1eb-44c7-ad91-fd09d4bdbb06
 
 ### 링크 삭제 
 
-https://github.com/user-attachments/assets/850f68f5-d61a-49d3-949c-3bb4c6b24af2
+https://github.com/user-attachments/assets/e914bfac-9947-4157-9ba5-894a653ff95a
 
 ### 파일 삭제 
 
-https://github.com/user-attachments/assets/72e6fc62-0b7a-4135-9909-f48f9fe2c75b
+https://github.com/user-attachments/assets/fcd01c80-d61b-43d8-91a2-b35b54951d35
 
 ### 링크 검색 
 
-https://github.com/user-attachments/assets/3665d54b-2357-4777-b890-88ef2df45b81
+https://github.com/user-attachments/assets/f32c317a-9786-4896-ba69-6bdeadeb2e20
 
 ### 다크모드
 https://github.com/user-attachments/assets/aede31f8-c7e3-4865-8cf1-85e6d0d0c06e
