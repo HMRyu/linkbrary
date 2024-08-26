@@ -5,15 +5,9 @@ import getFolderData from "@/app/actions/folder/getFolderData";
 import getLinkData from "@/app/actions/link/getLinkData";
 
 const FolderPage = async () => {
-  const currentUser = await getCurrentUser();
-
-  const user = currentUser;
-
-  const folderData = await getFolderData(user.id);
-  const linkData = await getLinkData(user.id);
-
-  const folders = folderData;
-  const links = linkData;
+  const user = await getCurrentUser();
+  const folders = await getFolderData(user.id);
+  const links = await getLinkData(user.id);
 
   return (
     <div>
