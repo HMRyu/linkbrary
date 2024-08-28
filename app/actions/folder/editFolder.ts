@@ -4,28 +4,36 @@ import { revalidatePath } from "next/cache";
 import { getAccessToken } from "@/app/api/cookies";
 
 const editFolder = async (folderId: number, name: string) => {
-  const accessToken = await getAccessToken();
+  try {
+    const accessToken = await getAccessToken();
 
-  const res = await fetch(
-    `https://bootcamp-api.codeit.kr/api/folders/${folderId}`,
-    {
-      method: "PUT",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "application/json",
+    const res = await fetch(
+      `https://bootcamp-api.codeit.kr/api/folders/${folderId}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+        }),
       },
-      body: JSON.stringify({
-        name,
-      }),
-    },
-  );
+    );
 
-  if (!res.ok) {
-    throw new Error("폴더 이름 변경 시 에러가 발생했습니다.");
+    revalidatePath("/");
+    revalidatePath("/folder");
+
+    return {
+      success: true,
+      message: "폴더 이름을 변경했습니다.",
+    };
+  } catch (error) {
+    return {
+      success: false,
+      message: "폴더 이름 변경 시 에러가 발생했습니다.",
+    };
   }
-
-  revalidatePath("/");
-  revalidatePath("/folder");
 };
 
 export default editFolder;

@@ -38,13 +38,15 @@ const LinkCard = ({ link, folders }: LinkCardProps) => {
 
   const handleDeleteClick = async (id: number) => {
     startTransition(async () => {
-      try {
-        await deleteLink(id);
-      } catch (error) {
+      const action = await deleteLink(id);
+
+      if (!action.success) {
         toast({
           variant: "destructive",
-          description: "링크를 삭제하는 데 실패했습니다. 다시 시도해주세요.",
+          description: action.message,
         });
+
+        return;
       }
     });
   };

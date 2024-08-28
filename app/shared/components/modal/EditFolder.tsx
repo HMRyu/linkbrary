@@ -35,17 +35,20 @@ const EditFolder = () => {
 
   const handleEditClick = async () => {
     startTransition(async () => {
-      try {
-        await editFolder(data.selectedFolderId, inputValue);
-        onClose();
-        setInputValue("");
-        data.setSelectedFolderName(inputValue);
-      } catch (error) {
+      const action = await editFolder(data.selectedFolderId, inputValue);
+
+      if (!action.success) {
         toast({
           variant: "destructive",
-          description: "폴더를 수정하는 데 실패했습니다. 다시 시도해주세요.",
+          description: action.message,
         });
+
+        return;
       }
+
+      onClose();
+      setInputValue("");
+      data.setSelectedFolderName(inputValue);
     });
   };
 

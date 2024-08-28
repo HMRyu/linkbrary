@@ -27,15 +27,18 @@ const DeleteFolder = () => {
 
   const handleDeleteClick = async () => {
     startTransition(async () => {
-      try {
-        await deleteFolder(data.selectedFolderId);
-        onClose();
-      } catch (error) {
+      const action = await deleteFolder(data.selectedFolderId);
+
+      if (!action.success) {
         toast({
           variant: "destructive",
-          description: "폴더를 삭제하는 데 실패했습니다. 다시 시도해주세요.",
+          description: action.message,
         });
+
+        return;
       }
+
+      onClose();
     });
   };
 

@@ -36,16 +36,19 @@ const AddFolder = () => {
 
   const handleAddClick = async () => {
     startTransition(async () => {
-      try {
-        await addFolder(inputValue);
-        onClose();
-        setInputValue("");
-      } catch (error) {
+      const action = await addFolder(inputValue);
+
+      if (!action.success) {
         toast({
           variant: "destructive",
-          description: "폴더를 추가하는 데 실패했습니다. 다시 시도해주세요.",
+          description: action.message,
         });
+
+        return;
       }
+
+      onClose();
+      setInputValue("");
     });
   };
 

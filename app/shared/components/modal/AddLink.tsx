@@ -39,22 +39,22 @@ const AddLink = () => {
 
   const handleAddClick = async () => {
     startTransition(async () => {
-      try {
-        const linkUrl = data.inputText ? data.inputText : data.url;
+      const linkUrl = data.inputText ? data.inputText : data.url;
+      const action = await addLink(linkUrl, selectedFolderId);
 
-        await addLink(linkUrl, selectedFolderId);
-
-        onClose();
-
-        if (data?.setInputText) {
-          data.setInputText("");
-        }
-      } catch (error) {
-        console.error(error);
+      if (!action.success) {
         toast({
           variant: "destructive",
-          description: "링크를 추가하는 데 실패했습니다. 다시 시도해주세요.",
+          description: action.message,
         });
+
+        return;
+      }
+
+      onClose();
+
+      if (data?.setInputText) {
+        data.setInputText("");
       }
     });
   };
