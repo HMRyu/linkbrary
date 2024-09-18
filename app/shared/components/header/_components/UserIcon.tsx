@@ -39,7 +39,7 @@ const UserIcon = ({ user }: { user: User }) => {
             <div className="flex items-center space-x-3">
               <Avatar>
                 <AvatarImage src={user.image_source} />
-                <AvatarFallback>{user.name}</AvatarFallback>
+                <AvatarFallback>{user.name[0]}</AvatarFallback>
               </Avatar>
               <div className="hidden md:block">{user.email}</div>
             </div>
