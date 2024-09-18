@@ -61,6 +61,8 @@ const SignIn = () => {
     startTransition(async () => {
       try {
         await signIn(values);
+
+        router.push("/");
       } catch (error) {
         toast({
           variant: "destructive",

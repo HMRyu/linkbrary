@@ -1,6 +1,5 @@
 "use server";
 
-import { redirect } from "next/navigation";
 import { setAccessToken } from "../../api/cookies";
 
 export async function signIn({
@@ -25,8 +24,6 @@ export async function signIn({
     const { data } = await res.json();
 
     await setAccessToken(data?.accessToken);
-
-    redirect("/");
   } catch (error) {
     return {
       message: "로그인 시 에러가 발생했습니다.",
