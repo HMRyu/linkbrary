@@ -136,6 +136,7 @@ const SignIn = () => {
         <div className="flex space-x-5">
           <div>test email : linkbraryTest@test.com</div>
           <div
+            className="cursor-pointer"
             onClick={() => handleCopy("linkbraryTest@test.com", setCopiedEmail)}
           >
             {copiedEmail ? <Check /> : <Copy />}
@@ -143,7 +144,10 @@ const SignIn = () => {
         </div>
         <div className="flex space-x-5">
           <div>test password : linkbraryTest</div>
-          <div onClick={() => handleCopy("linkbraryTest", setCopiedPassword)}>
+          <div
+            className="cursor-pointer"
+            onClick={() => handleCopy("linkbraryTest", setCopiedPassword)}
+          >
             {copiedPassword ? <Check /> : <Copy />}
           </div>
         </div>
