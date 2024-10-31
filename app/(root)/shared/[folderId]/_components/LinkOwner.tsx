@@ -27,7 +27,7 @@ const LinkOwner = ({ user, folderData }: LinkOwnerProps) => {
     <div className="flex flex-col items-center bg-linkbrary-gray_5 pb-[50px] dark:bg-linkbrary-black">
       <div>
         <Image
-          src={user.image_source || DEFAULT_AVATAR}
+          src={imageSource}
           alt="user avatar"
           width={60}
           height={60}
