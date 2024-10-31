@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
 
@@ -14,6 +15,7 @@ import Button from "../../button/Button";
 import { deleteAccessToken } from "@/app/api/cookies";
 import { User } from "@/types/user/User";
 import Spinner from "../../spinner/Spinner";
+import { DEFAULT_AVATAR } from "@/constants/constants";
 
 const UserIcon = ({ user }: { user: User }) => {
   const router = useRouter();
@@ -39,7 +41,14 @@ const UserIcon = ({ user }: { user: User }) => {
             <div className="flex items-center space-x-3">
               <Avatar>
                 <AvatarImage src={user.image_source} />
-                <AvatarFallback>{user.name[0]}</AvatarFallback>
+                <AvatarFallback>
+                  <Image
+                    src={DEFAULT_AVATAR}
+                    alt="default-avatar"
+                    width={48}
+                    height={48}
+                  />
+                </AvatarFallback>
               </Avatar>
               <div className="hidden md:block">{user.email}</div>
             </div>
